@@ -1,5 +1,5 @@
 -- Datenbank View für die Benutzer-Zieldatenbank
--- Gültig ab: Accounting vx.x.x-beta
+-- Gültig ab: Accounting v2.0.0-beta
 -- 
 
 -- --------------------------------------------------------

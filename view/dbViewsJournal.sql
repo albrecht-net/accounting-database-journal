@@ -26,7 +26,7 @@ FROM account
   LEFT JOIN accountCategory
     ON account.category = accountCategory.categoryID
   LEFT JOIN accountClass
-    ON accountCategory.class = accountClass.classID
+    ON accountCategory.class = accountClass.classID;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ FROM viewAccount a
     ON e.accountID = a.accountID
 WHERE a.classID IN (1, 2)
 GROUP BY a.accountID
-ORDER BY a.accountID ASC
+ORDER BY a.accountID ASC;
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,7 @@ FROM (SELECT
     'credit' AS EntrySide
   FROM journal j) e
 ORDER BY e.date ASC,
-  e.entryID ASC
+  e.entryID ASC;
 
 -- --------------------------------------------------------
 
@@ -137,4 +137,4 @@ FROM journal j
   LEFT JOIN classification AS classification2
     ON j.classification2 = classification2.classificationID
   LEFT JOIN classification AS classification3
-    ON j.classification3 = classification3.classificationID
+    ON j.classification3 = classification3.classificationID;

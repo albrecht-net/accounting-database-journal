@@ -1,5 +1,4 @@
--- Datenbank View für die Benutzer-Zieldatenbank
--- Gültig ab: Accounting v2.0.0-beta
+-- Datenbank View für die Journal Datenbank
 -- 
 
 -- --------------------------------------------------------

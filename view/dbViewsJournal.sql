@@ -20,7 +20,8 @@ AS SELECT
   accountCategory.label AS categoryLabel,
   account.accountID,
   account.label AS accountLabel,
-  accountClass.sign AS classSign
+  accountClass.sign AS classSign,
+  account.active AS accountIsActive
 FROM account
   LEFT JOIN accountCategory
     ON account.category = accountCategory.categoryID
@@ -45,7 +46,8 @@ AS SELECT
   a.categoryLabel,
   a.accountID,
   a.accountLabel,
-  SUM(e.grandTotal) AS balance
+  SUM(e.grandTotal) AS balance,
+  a.accountIsActive
 FROM viewAccount a
   LEFT JOIN viewEntries e
     ON e.accountID = a.accountID

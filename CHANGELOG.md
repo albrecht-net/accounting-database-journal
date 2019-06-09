@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## v1.4.0 (xxx.xx.xx)
+### Added
+- In der Ansicht "viewAccount" wird der Status eines Konto mittels dem Feld "accountIsActive" angezeigt.
+- In der Ansicht "viewBalanceAL" wird der Status eines Konto mittels dem Feld "accountIsActive" angezeigt.
+### Changed
+- Alle Vorlagen für die Ansichten wurden in eine Datei zusammengefasst.
+### Removed
+- Updateanweisungen (dbTablesJournal.update.sql) wurden bereinigt, da diese noch Versionsnummerierung der Accounting Repository beinhalteten.
+### Note
+- Alle erwähnten Versionsnummern (ausser ausdrücklich erwähnt) beziehen sich auf diese Repository. Die Kompabilität zu Accounting muss mithilfe der Versionsübersicht ([versionOverview.xlsx](https://github.com/albrecht-net/accounting/blob/master/versionOverview.xlsx)) sichergestellt werden.
+
+---
+
 ## v1.1.0 (2019.04.10)
 ### Changed
 - Datenbank-Vorlagen für die Applikations-Datenbank in eigene Repository ([albrecht-net/accounting-database](https://github.com/albrecht-net/accounting-database-application)) verschoben.

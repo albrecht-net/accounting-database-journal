@@ -1,5 +1,4 @@
--- Datenbank Tabellen Vorlage für die Benutzer-Zieldatenbank
--- Gültig ab: Accounting v2.0.0-beta
+-- Datenbank Tabellen Vorlage für die Journal Datenbank
 -- 
 
 -- --------------------------------------------------------

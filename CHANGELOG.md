@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## v1.6.0 (xxx.xx.xx)
+## v1.6.0 (2019.06.11)
 ### Added
 - In der Ansicht "viewAccount" wird der Status eines Konto mittels dem Feld "accountIsActive" angezeigt.
 - In der Ansicht "viewBalanceAL" wird der Status eines Konto mittels dem Feld "accountIsActive" angezeigt.

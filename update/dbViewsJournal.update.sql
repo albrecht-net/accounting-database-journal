@@ -6,7 +6,7 @@
 -- --------------------------------------------------------
 
 --
--- Update von v1.1.0 zu vx.x.x
+-- Update von v1.1.0 zu v1.6.0
 --
 
 -- Update viewAccount

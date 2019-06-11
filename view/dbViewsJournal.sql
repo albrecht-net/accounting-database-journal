@@ -1,4 +1,4 @@
--- Datenbank View für die Journal Datenbank
+-- Datenbank Views für die Journal Datenbank
 --
 
 -- --------------------------------------------------------

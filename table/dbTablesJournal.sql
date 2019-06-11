@@ -204,6 +204,25 @@ COMMENT = 'Dauerauftrag';
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `version`
+--
+
+CREATE TABLE `version` (
+    `versionID` INT(11) NOT NULL AUTO_INCREMENT,
+    `major` INT(11) NOT NULL,
+    `minor` INT(11) NOT NULL,
+    `patch` INT(11) NOT NULL,
+    `identifier` VARCHAR(16) NULL DEFAULT NULL,
+    `versionString` VARCHAR(64) NULL DEFAULT NULL,
+    PRIMARY KEY(`versionIF`)
+)
+ENGINE = InnoDB
+DEFAULT CHARSET = utf8mb4
+COMMENT = 'Version';
+
+-- --------------------------------------------------------
+
+--
 -- Constraints der Tabelle `journal`
 --
 
@@ -305,7 +324,7 @@ SET
   account.accountID = CONCAT(account.category,account.accountNo)
 WHERE
   account.category = NEW.categoryID;
-  
+
 -- --------------------------------------------------------
 
 --
@@ -325,3 +344,23 @@ ON
   `account` FOR EACH ROW
 SET
   NEW.accountID = CONCAT(NEW.category, NEW.accountNo);
+
+-- --------------------------------------------------------
+
+--
+-- Trigger der Tabelle `version`
+--
+
+-- generate_versionString_insert
+CREATE TRIGGER `generate_versionString_insert` BEFORE INSERT
+ON
+	`version` FOR EACH ROW
+SET
+	NEW.versionString = CONCAT('v', NEW.major, '.', NEW.minor, '.', NEW.patch, IF(ISNULL(NEW.identifier), '', '-'), IFNULL(NEW.identifier, ''));
+
+-- generate_versionString_update
+CREATE TRIGGER `generate_versionString_update` BEFORE UPDATE
+ON
+	`version` FOR EACH ROW
+SET
+	NEW.versionString = CONCAT('v', NEW.major, '.', NEW.minor, '.', NEW.patch, IF(ISNULL(NEW.identifier), '', '-'), IFNULL(NEW.identifier, ''));

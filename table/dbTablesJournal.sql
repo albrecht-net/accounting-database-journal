@@ -214,7 +214,7 @@ CREATE TABLE `version` (
     `patch` INT(11) NOT NULL,
     `identifier` VARCHAR(16) NULL DEFAULT NULL,
     `versionString` VARCHAR(64) NULL DEFAULT NULL,
-    PRIMARY KEY(`versionIF`)
+    PRIMARY KEY(`versionID`)
 )
 ENGINE = InnoDB
 DEFAULT CHARSET = utf8mb4
@@ -364,3 +364,11 @@ ON
 	`version` FOR EACH ROW
 SET
 	NEW.versionString = CONCAT('v', NEW.major, '.', NEW.minor, '.', NEW.patch, IF(ISNULL(NEW.identifier), '', '-'), IFNULL(NEW.identifier, ''));
+
+-- --------------------------------------------------------
+
+--
+-- Versionsinformationen einfügen
+--
+
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (NULL, '0', '0', '0', NULL, NULL);

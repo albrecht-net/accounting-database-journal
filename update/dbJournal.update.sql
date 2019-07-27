@@ -6,6 +6,18 @@
 -- --------------------------------------------------------
 
 --
+-- Update von v1.6.0 zu v1.9.0
+--
+
+-- Update viewEntries
+CREATE OR REPLACE ALGORITHM = UNDEFINED SQL SECURITY INVOKER VIEW viewEntries AS SELECT * FROM (SELECT j.entryID, j.date, j.recipient AS recipientID, recipient.label AS recipient, j.entryText, j.grandTotal, 'debit' AS EntrySide, j.debitAccount AS accountID, debitAccount.label AS account, j.creditAccount AS oppAccountID, creditAccount.label AS oppAccount, period.label AS period FROM journal j LEFT JOIN recipient ON j.recipient = recipient.recipientID LEFT JOIN account AS creditAccount ON j.creditAccount = creditAccount.accountID LEFT JOIN account AS debitAccount ON j.debitAccount = debitAccount.accountID LEFT JOIN period ON j.period = period.periodID UNION ALL SELECT j.entryID, j.date, j.recipient AS recipientID, recipient.label AS recipient, j.entryText, -j.grandTotal, 'credit' AS EntrySide, j.creditAccount AS accountID, creditAccount.label AS account, j.debitAccount AS oppAccountID, debitAccount.label AS oppAccount, period.label AS period FROM journal j LEFT JOIN recipient ON j.recipient = recipient.recipientID LEFT JOIN account AS creditAccount ON j.creditAccount = creditAccount.accountID LEFT JOIN account AS debitAccount ON j.debitAccount = debitAccount.accountID LEFT JOIN period ON j.period = period.periodID) e ORDER BY e.date ASC, e.entryID ASC;
+
+-- Versionsinformation
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 0, NULL, NULL) ON DUPLICATE KEY UPDATE `minor` = 9;
+
+-- --------------------------------------------------------
+
+--
 -- Update von v1.1.0 zu v1.6.0
 --
 
@@ -19,7 +31,7 @@ CREATE TRIGGER `generate_versionString_insert` BEFORE INSERT ON `version` FOR EA
 CREATE TRIGGER `generate_versionString_update` BEFORE UPDATE ON `version` FOR EACH ROW SET NEW.versionString = CONCAT('v', NEW.major, '.', NEW.minor, '.', NEW.patch, IF(ISNULL(NEW.identifier), '', '-'), IFNULL(NEW.identifier, ''));
 
 -- Versionsinformation einfügen
-INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (NULL, '1', '6', '0', NULL, NULL);
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (NULL, 1, 6, 0, NULL, NULL);
 
 -- Update viewAccount
 CREATE OR REPLACE ALGORITHM = UNDEFINED SQL SECURITY INVOKER VIEW viewAccount AS SELECT accountClass.classID, accountClass.label AS classLabel, accountCategory.categoryID, accountCategory.label AS categoryLabel, account.accountID, account.label AS accountLabel, accountClass.sign AS classSign, account.active AS accountIsActive FROM account LEFT JOIN accountCategory ON account.category = accountCategory.categoryID LEFT JOIN accountClass ON accountCategory.class = accountClass.classID;

@@ -6,10 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## v1.8.0 (2019.07.xx)
+## v1.9.0 (2019.07.27)
 ### Changed
-- Der Ansicht "viewEntries" wurden folgende Felder hinzugefügt oder Angepasst: Empfänger Bezeichnung (recipient), Konto Bezeichnung (account), Gegenkonto ID (oppAccountID), Gegenkonto Bezeichnung (oppAccount), Periode Bezeichnung (vorher ID) (period).
+- Der Ansicht "viewEntries" wurden folgende Felder hinzugefügt oder angepasst: Empfänger Bezeichnung (recipient), Konto Bezeichnung (account), Gegenkonto ID (oppAccountID), Gegenkonto Bezeichnung (oppAccount), Periode Bezeichnung (vorher ID) (period).
 - Neuanordnung Spaltenreihenfolge.
+- Alle Updateanweisungen zu Tabellen oder Ansichten (Views) sind in einer Datei (dbJournal.update.sql) zusammengefasst, um Updatefehler zu verhindern.
 
 ---
 

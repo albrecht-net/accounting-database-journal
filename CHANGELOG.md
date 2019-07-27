@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## v1.8.0 (2019.07.xx)
+### Changed
+- Der Ansicht "viewEntries" wurden folgende Felder hinzugefügt oder Angepasst: Empfänger Bezeichnung (recipient), Konto Bezeichnung (account), Gegenkonto ID (oppAccountID), Gegenkonto Bezeichnung (oppAccount), Periode Bezeichnung (vorher ID) (period).
+- Neuanordnung Spaltenreihenfolge.
+
+---
+
 ## v1.6.0 (2019.06.11)
 ### Added
 - In der Ansicht "viewAccount" wird der Status eines Konto mittels dem Feld "accountIsActive" angezeigt.

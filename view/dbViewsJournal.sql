@@ -71,26 +71,50 @@ AS SELECT
 FROM (SELECT
     j.entryID,
     j.date,
-    j.recipient,
+    j.recipient AS recipientID,
+    recipient.label AS recipient,
     j.entryText,
     j.grandTotal,
+    'debit' AS EntrySide,
     j.debitAccount AS accountID,
-    j.period,
-    'debit' AS EntrySide
+    debitAccount.label AS account,
+    j.creditAccount AS oppAccountID,
+    creditAccount.label AS oppAccount,
+    period.label AS period
   FROM journal j
+    LEFT JOIN recipient
+      ON j.recipient = recipient.recipientID
+    LEFT JOIN account AS creditAccount
+      ON j.creditAccount = creditAccount.accountID
+    LEFT JOIN account AS debitAccount
+      ON j.debitAccount = debitAccount.accountID
+    LEFT JOIN period
+      ON j.period = period.periodID
 
   UNION ALL
 
   SELECT
     j.entryID,
     j.date,
-    j.recipient,
+    j.recipient AS recipientID,
+    recipient.label AS recipient,
     j.entryText,
     -j.grandTotal,
+    'credit' AS EntrySide,
     j.creditAccount AS accountID,
-    j.period,
-    'credit' AS EntrySide
-  FROM journal j) e
+    creditAccount.label AS account,
+    j.debitAccount AS oppAccountID,
+    debitAccount.label AS oppAccount,
+    period.label AS period
+  FROM journal j
+    LEFT JOIN recipient
+      ON j.recipient = recipient.recipientID
+    LEFT JOIN account AS creditAccount
+      ON j.creditAccount = creditAccount.accountID
+    LEFT JOIN account AS debitAccount
+      ON j.debitAccount = debitAccount.accountID
+    LEFT JOIN period
+      ON j.period = period.periodID) e
 ORDER BY e.date ASC,
   e.entryID ASC;
 

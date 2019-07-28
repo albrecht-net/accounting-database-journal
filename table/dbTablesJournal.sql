@@ -31,7 +31,7 @@ CREATE TABLE `journal` (
   `recipient` INT(11) DEFAULT NULL,
   `invoiceNo` VARCHAR(64) DEFAULT NULL,
   `entryText` TEXT DEFAULT NULL,
-  `grandTotal` FLOAT(12,2) NOT NULL DEFAULT 0.00,
+  `grandTotal` DECIMAL(15,3) NOT NULL DEFAULT 0.000,
   `debitAccount` VARCHAR(5) DEFAULT NULL,
   `creditAccount` VARCHAR(5) DEFAULT NULL,
   `period` INT(11) DEFAULT NULL,

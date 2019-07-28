@@ -6,6 +6,19 @@
 -- --------------------------------------------------------
 
 --
+-- Update von v1.9.0 zu v1.9.1
+--
+
+-- Datentyp von journal.grandTotal zu Decimal(15,3) ändern
+ALTER TABLE `journal` CHANGE `grandTotal` `grandTotal` DECIMAL(12,2) NOT NULL DEFAULT '0.00';
+ALTER TABLE `journal` CHANGE `grandTotal` `grandTotal` DECIMAL(15,3) NOT NULL DEFAULT '0.000';
+
+-- Versionsinformation
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 1, NULL, NULL) ON DUPLICATE KEY UPDATE `minor` = 9, `patch` = 1;
+
+-- --------------------------------------------------------
+
+--
 -- Update von v1.6.0 zu v1.9.0
 --
 

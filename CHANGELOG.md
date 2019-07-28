@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## v1.9.1 (2019.07.28)
+### Fixed
+- Der Datentyp der Spalte "journal.grandTotal" wurde von FLOAT(12,2) zu DECIMAL(15,3) geändert, da der Datentyp FLOAT nicht für die hier genutze Anwendung geignet ist.
+
+---
+
 ## v1.9.0 (2019.07.27)
 ### Changed
 - Der Ansicht "viewEntries" wurden folgende Felder hinzugefügt oder angepasst: Empfänger Bezeichnung (recipient), Konto Bezeichnung (account), Gegenkonto ID (oppAccountID), Gegenkonto Bezeichnung (oppAccount), Periode Bezeichnung (vorher ID) (period).

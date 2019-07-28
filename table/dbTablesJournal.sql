@@ -371,4 +371,4 @@ SET
 -- Versionsinformationen einfügen
 --
 
-INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (NULL, '1', '6', '0', NULL, NULL);
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (NULL, 1, 9, 1, NULL, NULL);

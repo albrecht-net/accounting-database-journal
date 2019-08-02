@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## v1.9.2 (2019.08.02)
+### Fixed
+- Der Datentyp der Spalte "template.grandTotal" wurde von FLOAT(12,2) zu DECIMAL(15,3) geändert, da der Datentyp FLOAT nicht für die hier genutze Anwendung geignet ist [IS #47](https://github.com/albrecht-net/accounting/issues/47).
+
+---
+
 ## v1.9.1 (2019.07.28)
 ### Fixed
 - Der Datentyp der Spalte "journal.grandTotal" wurde von FLOAT(12,2) zu DECIMAL(15,3) geändert, da der Datentyp FLOAT nicht für die hier genutze Anwendung geignet ist [IS #47](https://github.com/albrecht-net/accounting/issues/47).

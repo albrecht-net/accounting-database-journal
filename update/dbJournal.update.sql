@@ -6,6 +6,19 @@
 -- --------------------------------------------------------
 
 --
+-- Update von v1.9.1 zu v1.9.2
+--
+
+-- Datentyp von template.grandTotal zu Decimal(15,3) ändern
+ALTER TABLE `template` CHANGE `grandTotal` `grandTotal` DECIMAL(12,2) NOT NULL DEFAULT '0.00';
+ALTER TABLE `template` CHANGE `grandTotal` `grandTotal` DECIMAL(15,3) NOT NULL DEFAULT '0.000';
+
+-- Versionsinformation
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 2, NULL, NULL) ON DUPLICATE KEY UPDATE `major` = 1, `minor` = 9, `patch` = 2, `identifier` = NULL, `versionString` = NULL;
+
+-- --------------------------------------------------------
+
+--
 -- Update von v1.9.0 zu v1.9.1
 --
 
@@ -14,7 +27,7 @@ ALTER TABLE `journal` CHANGE `grandTotal` `grandTotal` DECIMAL(12,2) NOT NULL DE
 ALTER TABLE `journal` CHANGE `grandTotal` `grandTotal` DECIMAL(15,3) NOT NULL DEFAULT '0.000';
 
 -- Versionsinformation
-INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 1, NULL, NULL) ON DUPLICATE KEY UPDATE `minor` = 9, `patch` = 1;
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 1, NULL, NULL) ON DUPLICATE KEY UPDATE `major` = 1, `minor` = 9, `patch` = 1, `identifier` = NULL, `versionString` = NULL;
 
 -- --------------------------------------------------------
 
@@ -26,7 +39,7 @@ INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `ve
 CREATE OR REPLACE ALGORITHM = UNDEFINED SQL SECURITY INVOKER VIEW viewEntries AS SELECT * FROM (SELECT j.entryID, j.date, j.recipient AS recipientID, recipient.label AS recipient, j.entryText, j.grandTotal, 'debit' AS EntrySide, j.debitAccount AS accountID, debitAccount.label AS account, j.creditAccount AS oppAccountID, creditAccount.label AS oppAccount, period.label AS period FROM journal j LEFT JOIN recipient ON j.recipient = recipient.recipientID LEFT JOIN account AS creditAccount ON j.creditAccount = creditAccount.accountID LEFT JOIN account AS debitAccount ON j.debitAccount = debitAccount.accountID LEFT JOIN period ON j.period = period.periodID UNION ALL SELECT j.entryID, j.date, j.recipient AS recipientID, recipient.label AS recipient, j.entryText, -j.grandTotal, 'credit' AS EntrySide, j.creditAccount AS accountID, creditAccount.label AS account, j.debitAccount AS oppAccountID, debitAccount.label AS oppAccount, period.label AS period FROM journal j LEFT JOIN recipient ON j.recipient = recipient.recipientID LEFT JOIN account AS creditAccount ON j.creditAccount = creditAccount.accountID LEFT JOIN account AS debitAccount ON j.debitAccount = debitAccount.accountID LEFT JOIN period ON j.period = period.periodID) e ORDER BY e.date ASC, e.entryID ASC;
 
 -- Versionsinformation
-INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 0, NULL, NULL) ON DUPLICATE KEY UPDATE `minor` = 9;
+INSERT INTO `version` (`versionID`, `major`, `minor`, `patch`, `identifier`, `versionString`) VALUES (1, 1, 9, 0, NULL, NULL) ON DUPLICATE KEY UPDATE `major` = 1, `minor` = 9, `patch` = 0, `identifier` = NULL, `versionString` = NULL;
 
 -- --------------------------------------------------------
 

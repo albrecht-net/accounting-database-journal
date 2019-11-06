@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## v1.10.0 (2019.11.06)
+### Changed
+- Der Ansicht "viewEntries" wurden folgende Felder hinzugefügt oder angepasst: Erstelldatum (created), Rechnungsnummer (invoiceNo), Periode ID (periodID), Periode Bezeichnung (period), Klassifikation 1 ID (classification1ID), Klassifikation 1 Bezeichnung (classification1), Klassifikation 2 ID (classification2ID), Klassifikation 2 Bezeichnung (classification2), Klassifikation 3 ID (classification3ID), Klassifikation 3 Bezeichnung (classification3), Buchungsreferenz (entryReference), Abgleich (reconcilation)
+
+---
+
 ## v1.9.2 (2019.08.02)
 ### Fixed
 - Der Datentyp der Spalte "template.grandTotal" wurde von FLOAT(12,2) zu DECIMAL(15,3) geändert, da der Datentyp FLOAT nicht für die hier genutze Anwendung geignet ist [IS #47](https://github.com/albrecht-net/accounting/issues/47).

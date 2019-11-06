@@ -70,9 +70,11 @@ AS SELECT
   *
 FROM (SELECT
     j.entryID,
+    j.created,
     j.date,
     j.recipient AS recipientID,
     recipient.label AS recipient,
+    j.invoiceNo,
     j.entryText,
     j.grandTotal,
     'debit' AS EntrySide,
@@ -80,7 +82,16 @@ FROM (SELECT
     debitAccount.label AS account,
     j.creditAccount AS oppAccountID,
     creditAccount.label AS oppAccount,
-    period.label AS period
+    j.period AS periodID,
+    period.label AS period,
+    j.classification1 AS classification1ID,
+    classification1.label AS classification1,
+    j.classification2 AS classification2ID,
+    classification2.label AS classification2,
+    j.classification3 AS classification3ID,
+    classification3.label AS classification3,
+    j.entryReference,
+    j.reconcilation
   FROM journal j
     LEFT JOIN recipient
       ON j.recipient = recipient.recipientID
@@ -90,14 +101,22 @@ FROM (SELECT
       ON j.debitAccount = debitAccount.accountID
     LEFT JOIN period
       ON j.period = period.periodID
+    LEFT JOIN classification AS classification1
+      ON j.classification1 = classification1.classificationID
+    LEFT JOIN classification AS classification2
+      ON j.classification2 = classification2.classificationID
+    LEFT JOIN classification AS classification3
+      ON j.classification3 = classification3.classificationID
 
   UNION ALL
 
   SELECT
     j.entryID,
+    j.created,
     j.date,
     j.recipient AS recipientID,
     recipient.label AS recipient,
+    j.invoiceNo,
     j.entryText,
     -j.grandTotal,
     'credit' AS EntrySide,
@@ -105,7 +124,16 @@ FROM (SELECT
     creditAccount.label AS account,
     j.debitAccount AS oppAccountID,
     debitAccount.label AS oppAccount,
-    period.label AS period
+    j.period AS periodID,
+    period.label AS period,
+    j.classification1 AS classification1ID,
+    classification1.label AS classification1,
+    j.classification2 AS classification2ID,
+    classification2.label AS classification2,
+    j.classification3 AS classification3ID,
+    classification3.label AS classification3,
+    j.entryReference,
+    j.reconcilation
   FROM journal j
     LEFT JOIN recipient
       ON j.recipient = recipient.recipientID
@@ -114,7 +142,13 @@ FROM (SELECT
     LEFT JOIN account AS debitAccount
       ON j.debitAccount = debitAccount.accountID
     LEFT JOIN period
-      ON j.period = period.periodID) e
+      ON j.period = period.periodID
+    LEFT JOIN classification AS classification1
+      ON j.classification1 = classification1.classificationID
+    LEFT JOIN classification AS classification2
+      ON j.classification2 = classification2.classificationID
+    LEFT JOIN classification AS classification3
+      ON j.classification3 = classification3.classificationID) e
 ORDER BY e.date ASC,
   e.entryID ASC;
 

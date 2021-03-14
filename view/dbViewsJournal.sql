@@ -149,8 +149,8 @@ FROM (SELECT
       ON j.classification2 = classification2.classificationID
     LEFT JOIN classification AS classification3
       ON j.classification3 = classification3.classificationID) e
-ORDER BY e.date ASC,
-  e.entryID ASC;
+ORDER BY e.date DESC,
+  e.created DESC;
 
 -- --------------------------------------------------------
 
@@ -167,17 +167,22 @@ AS SELECT
   j.entryID,
   j.created,
   j.date,
+  j.recipient AS recipientID,
   recipient.label AS recipient,
   j.invoiceNo,
   j.entryText,
   j.grandTotal,
-  debitAccount.accountID AS debitAccountID,
+  j.debitAccount AS debitAccountID,
   debitAccount.label AS debitAccount,
-  creditAccount.accountID AS creditAccountID,
+  j.creditAccount AS creditAccountID,
   creditAccount.label AS creditAccount,
+  j.period AS periodID,
   period.label AS period,
+  j.classification1 AS classification1ID,
   classification1.label AS classification1,
+  j.classification2 AS classification2ID,
   classification2.label AS classification2,
+  j.classification3 AS classification3ID,
   classification3.label AS classification3,
   j.entryReference,
   j.reconcilation
@@ -195,4 +200,6 @@ FROM journal j
   LEFT JOIN classification AS classification2
     ON j.classification2 = classification2.classificationID
   LEFT JOIN classification AS classification3
-    ON j.classification3 = classification3.classificationID;
+    ON j.classification3 = classification3.classificationID
+ORDER BY j.date DESC,
+  j.created DESC;

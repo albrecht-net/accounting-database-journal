@@ -149,8 +149,8 @@ FROM (SELECT
       ON j.classification2 = classification2.classificationID
     LEFT JOIN classification AS classification3
       ON j.classification3 = classification3.classificationID) e
-ORDER BY e.date ASC,
-  e.entryID ASC;
+ORDER BY e.date DESC,
+  e.created DESC;
 
 -- --------------------------------------------------------
 
@@ -176,6 +176,7 @@ AS SELECT
   debitAccount.label AS debitAccount,
   j.creditAccount AS creditAccountID,
   creditAccount.label AS creditAccount,
+  j.period AS periodID,
   period.label AS period,
   j.classification1 AS classification1ID,
   classification1.label AS classification1,
@@ -199,4 +200,6 @@ FROM journal j
   LEFT JOIN classification AS classification2
     ON j.classification2 = classification2.classificationID
   LEFT JOIN classification AS classification3
-    ON j.classification3 = classification3.classificationID;
+    ON j.classification3 = classification3.classificationID
+ORDER BY j.date DESC,
+  j.created DESC;

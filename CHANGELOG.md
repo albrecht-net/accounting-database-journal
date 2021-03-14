@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## v1.11.0 (2021.03.14)
+### Changed
+- Die Ansicht "viewEntries" wird nun neu nach dem 1. Buchungsdatum (date) und 2. Erstelldatum (created) absteigend sortiert.
+- Der Ansicht "viewJournal" wurden folgende Felder hinzugefügt oder angepasst: Empfänger ID (recipientID), Periode ID (periodID), Klassifikation 1 ID (classification1ID), Klassifikation 2 ID (classification2ID), Klassifikation 3 ID (classification3ID).
+- Die Ansicht "viewJournal" wird nun neu nach dem 1. Buchungsdatum (date) und 2. Erstelldatum (created) absteigend sortiert.
+
+---
+
 ## v1.10.0 (2019.11.06)
 ### Changed
 - Der Ansicht "viewEntries" wurden folgende Felder hinzugefügt oder angepasst: Erstelldatum (created), Rechnungsnummer (invoiceNo), Periode ID (periodID), Periode Bezeichnung (period), Klassifikation 1 ID (classification1ID), Klassifikation 1 Bezeichnung (classification1), Klassifikation 2 ID (classification2ID), Klassifikation 2 Bezeichnung (classification2), Klassifikation 3 ID (classification3ID), Klassifikation 3 Bezeichnung (classification3), Buchungsreferenz (entryReference), Abgleich (reconcilation)
